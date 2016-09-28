@@ -1,0 +1,75 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8"/>
+	<title></title>
+	<style>
+	*{
+		margin:0;
+		padding:0;
+	}
+	body{
+		background-color:yellow;
+	}
+	.plane-wrapper{
+		transition:all .5s;
+		top:50%;
+		position:absolute;
+		display:inline-block;
+		animation:undulate 8s linear infinite alternate;
+		perspective:2500px;
+	}
+	@-webkit-keyframes undulate{
+		0%,100%,50%{
+			-webkit-transform:translate3d(0,0,0);
+		}
+		25%{
+			-webkit-transform:translate3d(-6px,-18px,0);
+		}
+		75%{
+			-webkit-transform:translate3d(6px,10px,0);
+		}
+	}
+	.plane-wrapper .rotate-container{
+		position:absolute;
+		top:51.7003%;
+		left:13.1%;
+		display:inline-block;
+		width:27.424%;
+		height:14.4474%;
+		transform-origin:center center;
+		animation:rotating .2s linear infinite reverse
+	}
+	.plane-wrapper .propeller {
+		width:100%;
+		transform:rotateY(-28deg);
+	}
+
+	.section-1.animate-out .plane-wrapper{-webkit-animation:plane-out 1.3s ease-out forwards;animation:plane-out 1.3s ease-out forwards}
+
+	@-webkit-keyframes rotating{0%{-webkit-transform:rotate(0) rotateY(-20deg);transform:rotate(0) rotateY(-20deg)}50%{-webkit-transform:rotate(180deg) rotateY(-20deg);transform:rotate(180deg) rotateY(-20deg)}100%{-webkit-transform:rotate(360deg) rotateY(-20deg);transform:rotate(360deg) rotateY(-20deg)}}
+	@-webkit-keyframes plane-out{0%{-webkit-transform:scale(1) translateX(0);transform:scale(1) translateX(0)}30%{-webkit-transform:scale(.8) translateX(160px);transform:scale(.8) translateX(160px)}100%{-webkit-transform:scale(1.2) translateX(-2000px);transform:scale(1.2) translateX(-2000px)}}
+	@keyframes plane-out{0%{-webkit-transform:scale(1) translateX(0);transform:scale(1) translateX(0)}30%{-webkit-transform:scale(.8) translateX(160px);transform:scale(.8) translateX(160px)}100%{-webkit-transform:scale(1.2) translateX(-2000px);transform:scale(1.2) translateX(-2000px)}}
+	</style>
+</head>
+<body>
+<div class="section section-1  ready">
+	<div class="plane-wrapper" style="left:315.5px;">
+		<img class="plane" src="http://fir.im/images/plane.svg">
+		<div class="rotate-container">
+			<img class="propeller" src="http://fir.im/images/propeller.svg"/>
+		</div>
+	</div>
+</div>
+<script src="http://cdn.bootcss.com/jquery/2.1.0/jquery.js"></script>
+<script>
+var bOut = false;
+$(document).on('scroll', function(){
+	if(!bOut) {
+		$('.section').removeClass('ready').addClass('animate-out');
+	}
+	console.log('scroll');
+})
+</script>
+</body>
+</html>
